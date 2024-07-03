@@ -1,0 +1,4 @@
+panel
+boto3
+pandas
+
