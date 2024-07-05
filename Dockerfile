@@ -1,6 +1,6 @@
 FROM python:3
 
-WORKDIR /workplace/eb-estops-docker
+WORKDIR /eb-estops-docker
 
 EXPOSE 80
 

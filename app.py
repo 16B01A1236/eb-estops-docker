@@ -10,6 +10,7 @@ from panel.chat import ChatInterface
 
 
 
+
 js_files = {'amplify': '\\custom_static\\aws-amplify.min.js','midway': '\\custom_static\\midway.js'}
 pn.extension(js_files=js_files)
 print(js_files['midway'])
@@ -182,7 +183,7 @@ if __name__ == "__main__":
         create_chat_interface,
         static_dirs={'/custom_static': './custom_static'},
         start=True,
-        port= 99,
+        port= 80,
         address= '0.0.0.0',
         websocket_origin="*"
     )   
