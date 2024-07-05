@@ -7,16 +7,13 @@ import boto3
 import panel as pn
 
 from panel.chat import ChatInterface
+import tornado.web
 
 
 
 
-js_files = {'amplify': '\\custom_static\\aws-amplify.min.js','midway': '\\custom_static\\midway.js'}
-pn.extension(js_files=js_files)
-print(js_files['midway'])
-print('Hi from app')
+
 os.environ['PANEL_ADMIN_LOG_LEVEL'] = 'debug'
-
 pn.extension('floatpanel')
 
 
@@ -167,17 +164,23 @@ def create_chat_interface():
     CHAT_INTERFACE.send("Hi, Quartz!", respond=True)
     return TEMPLATE
 
-'''def login():
-    project_name = "quartz-eu-beta"
-    app_client_id = "2fq8dtalchrevle04i6tdkvmrd"
-    redirect_uri = "https://estops.beta-eu.quartz.rme.amazon.dev/"
-    redirect(f'https://{project_name}.auth.eu-west-1.amazoncognito.com/oauth2/authorize?client_id={app_client_id}&response_type=code&scope=email+openid+phone+profile&redirect_uri={redirect_uri}')
+class HealthCheckHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Healthy")
+        self.set_status(200)
 
+class render_403_error(tornado.web.RequestHandler):
+    def get(self):
+        # Render the 403.html page
+        error_path = os.path.join(os.getcwd(), 'error', '403.html')
+        with open(error_path, 'r') as f:
+            error_html = f.read()
+        self.write(error_html)
 
-pn.route("/", create_chat_interface)
-pn.route("/login", login)
-'''
-
+extra_patterns = [
+    (r"/health", HealthCheckHandler),
+    (r"/error/403.html", render_403_error)
+]  
 if __name__ == "__main__":
     pn.serve(
         create_chat_interface,
@@ -185,5 +188,6 @@ if __name__ == "__main__":
         start=True,
         port= 80,
         address= '0.0.0.0',
-        websocket_origin="*"
+        websocket_origin="*",
+        extra_patterns=extra_patterns
     )   
