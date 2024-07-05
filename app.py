@@ -177,17 +177,17 @@ class render_403_error(tornado.web.RequestHandler):
             error_html = f.read()
         self.write(error_html)
 
-extra_patterns = [
+'''extra_patterns = [
     (r"/health", HealthCheckHandler),
     (r"/error/403.html", render_403_error)
-]  
+] ''' 
 if __name__ == "__main__":
     pn.serve(
-        create_chat_interface,
-        static_dirs={'/custom_static': './custom_static'},
+        
+        {'/':create_chat_interface,'/health':HealthCheckHandler,'/error/403.html':render_403_error},
         start=True,
         port= 80,
         address= '0.0.0.0',
         websocket_origin="*",
-        extra_patterns=extra_patterns
+        
     )   
