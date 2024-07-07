@@ -8,6 +8,8 @@ import panel as pn
 
 from panel.chat import ChatInterface
 import tornado.web
+from middleware import MidwayMiddleWare
+from python_amazon_interceptor.amazon_handler import Config
 
 
 
@@ -177,11 +179,20 @@ class render_403_error(tornado.web.RequestHandler):
             error_html = f.read()
         self.write(error_html)
 
+pn.serve(
+    {'/':create_chat_interface,'/health':HealthCheckHandler,'/error/403.html':render_403_error},
+    start=True,
+    port= 80,
+    address= '0.0.0.0',
+    websocket_origin="*"
+
+) 
+
 '''extra_patterns = [
     (r"/health", HealthCheckHandler),
     (r"/error/403.html", render_403_error)
 ] ''' 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     pn.serve(
         
         {'/':create_chat_interface,'/health':HealthCheckHandler,'/error/403.html':render_403_error},
@@ -190,4 +201,4 @@ if __name__ == "__main__":
         address= '0.0.0.0',
         websocket_origin="*",
         
-    )   
+    )   '''
