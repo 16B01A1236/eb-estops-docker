@@ -223,7 +223,7 @@ server_kwargs = {
 }
 
 panel_application = Server(
-    {'/': modify_doc}  # list of Bokeh applications
+    {'/': modify_doc}, # list of Bokeh applications
     io_loop=loop,        # Tornado IOLoop
     **server_kwargs      # port, num_procs, etc.
 )
