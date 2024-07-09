@@ -9,6 +9,7 @@ gunicorn
 
 werkzeug==1.0.1
 cachetools
+markupsafe
 
 
 
