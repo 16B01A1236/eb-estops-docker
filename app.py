@@ -222,6 +222,23 @@ client_secret = "RgjvkZpWHNZCcEGXPjX5t3EFtizsGtoh5yZpCuIGmdM6"
 
 panel_app = create_chat_interface()
 
+def authorize(user_info, page):
+    # user = user_info['user']
+    if user_info:
+        return '/app'
+    else:
+        return '/login'
+    # if page == "/":
+    #     if user in ADMINS:
+    #         return '/admin'
+    #     else:
+    #         return '/user'
+    # elif user in ADMINS:
+    #     return True
+    # else:
+    #     return page.startswith('/user')
+
+
 # def modify_doc(doc):
 #     # Convert the Panel app to a Bokeh layout and add it to the document
 #     app = my_panel_app()
@@ -253,11 +270,13 @@ panel_app = create_chat_interface()
 
 if __name__ == "__main__":
     #appli.run(debug=False, port=8000)
+    pn.config.authorize_callback = authorize
+    
     pn.serve(
 
         {
          '/':welcome,
-         '/login':create_chat_interface,
+         '/app':create_chat_interface,
          '/health':health_check
         },
         start=True,
