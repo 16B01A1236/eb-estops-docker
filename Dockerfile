@@ -10,13 +10,13 @@ WORKDIR /eb-estops-docker
 COPY . .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir panel bokeh gunicorn
+RUN pip3 install -r requirements.txt
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
 # Define environment variable
-ENV PORT 80
+
 
 # Run gunicorn server
 CMD ["gunicorn", "--bind", ":80", "--timeout", "10000", "app:application"]
