@@ -2,11 +2,11 @@ pandas
 boto3
 panel
 attrs
-PyJWT
+PyJWT==2.3.0
 flask==1.1.4
 #flask_cognito_lib
 gunicorn
-
+cryptography==36.0.1
 werkzeug==1.0.1
 cachetools
 markupsafe==2.0.1
