@@ -1,7 +1,7 @@
 #["panel", "serve", "app.py", "--address", "0.0.0.0", "--port", "80", "--allow-websocket-origin=*"]
 
 # Use the official Python image from the Docker Hub
-FROM python:3.9-slim
+FROM python:3
 
 # Set the working directory in the container
 WORKDIR /eb-estops-docker
