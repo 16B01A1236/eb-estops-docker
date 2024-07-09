@@ -206,30 +206,30 @@ def create_chat_interface():
     CHAT_INTERFACE.send("Hi, Quartz!", respond=True)
     return TEMPLATE
 
-client_id = "Quartz_EU_Beta"
+client_id = "2fq8dtalchrevle04i6tdkvmrd"
 client_secret = "RgjvkZpWHNZCcEGXPjX5t3EFtizsGtoh5yZpCuIGmdM6"
 
-panel_app = create_chat_interface()
-panel_app.servable()
+# panel_app = create_chat_interface()
+# panel_app.servable()
 
 
 
-application = MidwayMiddleWare(panel_app.servable())
+#application = MidwayMiddleWare(panel_app.servable())
 
-# if __name__ == "__main__":
-#     #appli.run(debug=False, port=8000)
-#     pn.serve(
-#         create_chat_interface,
-#         start=True,
-#         port= 80,
-#         address= '0.0.0.0',
-#         websocket_origin="*"
-#     )
-#         login_endpoint='/login',
-#         logout_endpoint='/logout',
-#         oauth_key = client_id, 
-#         oauth_secret = client_secret,
-#         oauth_extra_params={'token_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v2/certs', 'authorize_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v1/authorize' }
-
+if __name__ == "__main__":
+    #appli.run(debug=False, port=8000)
+    pn.serve(
+        create_chat_interface,
+        start=True,
+        port= 80,
+        address= '0.0.0.0',
+        websocket_origin="*",
+        oauth_provider="auth_code",
+        login_endpoint='/',
+        logout_endpoint='/logout',
+        oauth_key = client_id, 
+        cookie_secret="RME",
+        oauth_extra_params={'token_url': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_t6ebYpeO2/.well-known/jwks.json' }
+    )
  
 
