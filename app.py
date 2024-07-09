@@ -184,6 +184,17 @@ def chat_handler(content: str, user: str, instance: pn.chat.ChatInterface):
 
     return pn.Column(*renderable_content)
 
+@pn.depends()
+def health_check():
+    # Create a simple response with a 200 status code
+    return pn.pane.JSON({'status': 'ok'}), 200
+
+@pn.depends()
+def welcome():
+    # Create a simple response with a 200 status code
+    return pn.pane.JSON({'status': 'welcome'}), 200
+
+
 def create_chat_interface():
     CHAT_INTERFACE = ChatInterface(
         callback=chat_handler,
@@ -243,13 +254,18 @@ panel_app = create_chat_interface()
 if __name__ == "__main__":
     #appli.run(debug=False, port=8000)
     pn.serve(
-        create_chat_interface,
+
+        {
+         '/':welcome,
+         '/login':create_chat_interface,
+         '/health':health_check
+        },
         start=True,
         port= 80,
         address= '0.0.0.0',
         websocket_origin="*",
         oauth_provider="auth_code",
-        login_endpoint='/',
+        login_endpoint='/login',
         logout_endpoint='/logout',
         oauth_key = client_id, 
         cookie_secret="RME",
