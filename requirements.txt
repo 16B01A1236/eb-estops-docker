@@ -4,7 +4,7 @@ panel
 PyJWT
 flask_cognito_lib
 gunicorn
-werkzeug==2.0.3
+werkzeug==1.0.1
 cachetools
 attrs
 
