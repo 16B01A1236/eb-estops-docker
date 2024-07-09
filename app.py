@@ -284,7 +284,7 @@ if __name__ == "__main__":
         address= '0.0.0.0',
         websocket_origin="*",
         oauth_provider="auth_code",
-        login_endpoint='/login',
+        login_endpoint='/app',
         logout_endpoint='/logout',
         oauth_key = client_id, 
         cookie_secret="RME",
