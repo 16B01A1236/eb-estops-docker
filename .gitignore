@@ -4,3 +4,10 @@
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 .venv
+application.py
+flask_app.py
+pane_auth_1.py
+wsgi.py
+panel_auth.py
+panel_application.py
+application.py
