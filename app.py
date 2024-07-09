@@ -212,18 +212,9 @@ client_secret = "RgjvkZpWHNZCcEGXPjX5t3EFtizsGtoh5yZpCuIGmdM6"
 panel_app = create_chat_interface()
 panel_app.servable()
 
-# def modify_doc(doc):
-#     doc.add_root(panel_app.get_root())
 
-# bokeh_app = Application(FunctionHandler(modify_doc))
 
-# # Create Bokeh server
-# server = Server({'/': bokeh_app}, allow_websocket_origin=["*"])
-
-# def get_wsgi_app():
-#     return server
-
-application = MidwayMiddleWare(panel_app)
+application = MidwayMiddleWare(panel_app.servable())
 
 # if __name__ == "__main__":
 #     #appli.run(debug=False, port=8000)
