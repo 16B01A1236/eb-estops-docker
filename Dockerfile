@@ -19,5 +19,5 @@ EXPOSE 80
 
 
 # Run gunicorn server
-#CMD ["python", "app.py"]
-CMD ["gunicorn", "--bind", ":80", "--timeout", "10000", "app:application"]
+CMD ["python", "app.py"]
+#CMD ["gunicorn", "--bind", ":80", "--timeout", "10000", "app:application"]
