@@ -277,6 +277,7 @@ if __name__ == "__main__":
         {
          '/':welcome,
          '/app':create_chat_interface,
+         '/login':welcome,
          '/health':health_check
         },
         start=True,
@@ -284,7 +285,7 @@ if __name__ == "__main__":
         address= '0.0.0.0',
         websocket_origin="*",
         oauth_provider="auth_code",
-        login_endpoint='/app',
+        login_endpoint='/login',
         logout_endpoint='/logout',
         oauth_key = client_id, 
         cookie_secret="RME",
