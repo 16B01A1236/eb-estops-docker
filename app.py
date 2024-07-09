@@ -289,7 +289,7 @@ if __name__ == "__main__":
         logout_endpoint='/logout',
         oauth_key = client_id, 
         cookie_secret="RME",
-        oauth_extra_params={'token_url': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_t6ebYpeO2/.well-known/jwks.json','authorize_url':'https://quartz-eu-beta.auth.eu-west-1.amazoncognito.com/oauth2/idpresponse','scope': 'openid'}
+        oauth_extra_params={'token_url': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_t6ebYpeO2/.well-known/jwks.json','authorize_url':'https://quartz-eu-beta.auth.eu-west-1.amazoncognito.com/oauth2/authorize','scope': 'openid'}
     )
  
 
