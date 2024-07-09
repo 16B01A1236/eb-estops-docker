@@ -3,6 +3,7 @@ from python_amazon_interceptor import amazon_handler
 from python_amazon_interceptor.amazon_handler import Config
 
 
+
 environment_config = Config(
       auth_path="https://idp-integ.federate.amazon.com/api/oauth2/v1/authorize",
       auth_redirect_path="https://idp-integ.federate.amazon.com/api/oauth2/v1/authorize",
@@ -29,4 +30,4 @@ class MidwayMiddleWare:
             start_response(response.status, response.headers)
             return [b"Auth Done!"]
         else:
-            return self.app(environment, start_response)
+            return self.app

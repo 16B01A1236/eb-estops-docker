@@ -212,33 +212,33 @@ client_secret = "RgjvkZpWHNZCcEGXPjX5t3EFtizsGtoh5yZpCuIGmdM6"
 panel_app = create_chat_interface()
 panel_app.servable()
 
-def modify_doc(doc):
-    doc.add_root(panel_app.get_root())
+# def modify_doc(doc):
+#     doc.add_root(panel_app.get_root())
 
-bokeh_app = Application(FunctionHandler(modify_doc))
+# bokeh_app = Application(FunctionHandler(modify_doc))
 
-# Create Bokeh server
-server = Server({'/': bokeh_app}, allow_websocket_origin=["*"])
+# # Create Bokeh server
+# server = Server({'/': bokeh_app}, allow_websocket_origin=["*"])
 
-def get_wsgi_app():
-    return server
+# def get_wsgi_app():
+#     return server
 
-application = MidwayMiddleWare(get_wsgi_app())
+application = MidwayMiddleWare(panel_app)
 
-'''if __name__ == "__main__":
-    #appli.run(debug=False, port=8000)
-    pn.serve(
-        create_chat_interface,
-        start=True,
-        port= 80,
-        address= '0.0.0.0',
-        websocket_origin="*"
-    )
-        login_endpoint='/login',
-        logout_endpoint='/logout',
-        oauth_key = client_id, 
-        oauth_secret = client_secret,
-        oauth_extra_params={'token_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v2/certs', 'authorize_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v1/authorize' }
-'''
+# if __name__ == "__main__":
+#     #appli.run(debug=False, port=8000)
+#     pn.serve(
+#         create_chat_interface,
+#         start=True,
+#         port= 80,
+#         address= '0.0.0.0',
+#         websocket_origin="*"
+#     )
+#         login_endpoint='/login',
+#         logout_endpoint='/logout',
+#         oauth_key = client_id, 
+#         oauth_secret = client_secret,
+#         oauth_extra_params={'token_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v2/certs', 'authorize_url': 'https://idp-integ.federate.amazon.com/api/oauth2/v1/authorize' }
+
  
 
