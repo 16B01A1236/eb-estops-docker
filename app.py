@@ -211,49 +211,49 @@ client_secret = "RgjvkZpWHNZCcEGXPjX5t3EFtizsGtoh5yZpCuIGmdM6"
 
 panel_app = create_chat_interface()
 
-def modify_doc(doc):
-    # Convert the Panel app to a Bokeh layout and add it to the document
-    app = my_panel_app()
-    doc.add_root(app.get_root())
+# def modify_doc(doc):
+#     # Convert the Panel app to a Bokeh layout and add it to the document
+#     app = my_panel_app()
+#     doc.add_root(app.get_root())
 
-server_kwargs = {
-    'port': 80,      # Set the port
-    'num_procs': 1,    # Number of processes
-    'allow_websocket_origin': ["*"]
-}
+# server_kwargs = {
+#     'port': 80,      # Set the port
+#     'num_procs': 1,    # Number of processes
+#     'allow_websocket_origin': ["*"]
+# }
 
-panel_application = Server(
-    {'/': modify_doc}, # list of Bokeh applications
-    io_loop=loop,        # Tornado IOLoop
-    **server_kwargs      # port, num_procs, etc.
-)
+# panel_application = Server(
+#     {'/': modify_doc}, # list of Bokeh applications
+#     io_loop=loop,        # Tornado IOLoop
+#     **server_kwargs      # port, num_procs, etc.
+# )
 
 
 
-application = MidwayMiddleWare(panel_application)
+#application = MidwayMiddleWare(panel_application)
 
-if __name__ == "__main__":
-    panel_application.start()
+# if __name__ == "__main__":
+#     panel_application.start()
 # panel_app.servable()
 
 
 
 
 
-# if __name__ == "__main__":
-#     #appli.run(debug=False, port=8000)
-#     pn.serve(
-#         create_chat_interface,
-#         start=True,
-#         port= 80,
-#         address= '0.0.0.0',
-#         websocket_origin="*",
-#         oauth_provider="auth_code",
-#         login_endpoint='/',
-#         logout_endpoint='/logout',
-#         oauth_key = client_id, 
-#         cookie_secret="RME",
-#         oauth_extra_params={'TOKEN_URL': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_t6ebYpeO2/.well-known/jwks.json','AUTHORIZE_URL':'https://estops.beta-eu.quartz.rme.amazon.dev','scope': 'openid'}
-#     )
+if __name__ == "__main__":
+    #appli.run(debug=False, port=8000)
+    pn.serve(
+        create_chat_interface,
+        start=True,
+        port= 80,
+        address= '0.0.0.0',
+        websocket_origin="*",
+        oauth_provider="auth_code",
+        login_endpoint='/',
+        logout_endpoint='/logout',
+        oauth_key = client_id, 
+        cookie_secret="RME",
+        oauth_extra_params={'token_url': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_t6ebYpeO2/.well-known/jwks.json','authorize_url':'https://quartz-eu-beta.auth.eu-west-1.amazoncognito.com/oauth2/idpresponse','scope': 'openid'}
+    )
  
 
