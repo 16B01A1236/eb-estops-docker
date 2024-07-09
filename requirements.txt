@@ -5,6 +5,7 @@ PyJWT
 flask_cognito_lib
 gunicorn
 werkzeug==2.0.3
+cachetools
 
 
 
