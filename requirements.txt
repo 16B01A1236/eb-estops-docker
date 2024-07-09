@@ -1,12 +1,15 @@
 pandas
 boto3
 panel
+attrs
 PyJWT
-flask_cognito_lib
+flask==1.1.4
+#flask_cognito_lib
 gunicorn
+
 werkzeug==1.0.1
 cachetools
-attrs
+
 
 
 
